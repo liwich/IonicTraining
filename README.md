@@ -4,7 +4,7 @@ Prerequisites:
 Install node.js
 
 *Run
-npm install -g ionic cordova
+npm install -g bower ionic cordova
 
 In the project folder run:
 
