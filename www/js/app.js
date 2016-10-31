@@ -60,8 +60,8 @@ $urlRouterProvider.otherwise('/tab/discover');
 
 .constant('SERVER', {
   // Local server
-  url: 'http://localhost:8100'
+  //url: 'http://localhost:8100'
 
   // Public Heroku server
-  //url: 'https://ionic-songhop.herokuapp.com'
+  url: 'https://ionic-songhop.herokuapp.com'
 });

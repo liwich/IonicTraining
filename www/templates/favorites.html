@@ -1,22 +1,13 @@
 <ion-view view-title="Favorites">
     <ion-content>
         <ion-list>
-            <ion-item class="image-avatar">
-                <img ng-src="/img/ionic.png">
-                <h2>keep it realtime yo</h2>
-                <p>James trampolin</p>
-            </ion-item>
-
-            <ion-item class="image-avatar">
-                <img ng-src="/img/ionic.png">
-                <h2>keep it realtime yo</h2>
-                <p>James trampolin</p>
-            </ion-item>
-
-            <ion-item class="image-avatar">
-                <img ng-src="/img/ionic.png">
-                <h2>keep it realtime yo</h2>
-                <p>James trampolin</p>
+            <ion-item class="item-avatar" ng-repeat="song in favorites">
+                <img ng-src="{{song.image_small}}">
+                <h2>{{song.title}}</h2>
+                <p>{{song.artist}}</p>
+                <ion-option-button class="button-assertive" ng-click="removeSongFromFavorites(song,$index)">
+                    <i class="ion-minus-circled"></i>
+                </ion-option-button>
             </ion-item>
         </ion-list>
     </ion-content>
