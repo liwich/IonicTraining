@@ -1,6 +1,6 @@
 angular.module('songhop.controllers',['ionic','songhop.services'])
 
-.controller('DiscoverCtrl',function($scope){
+.controller('DiscoverCtrl',function($scope,$timeout){
 
     $scope.songs=[
      {
@@ -26,8 +26,14 @@ angular.module('songhop.controllers',['ionic','songhop.services'])
   $scope.currentSong= angular.copy($scope.songs[0]);
 
   $scope.sendFeedback=function(bool){
+
+    $scope.currentSong.rated=bool;
+    $scope.currentSong.hide=true;
+
+    $timeout(function(){
       var randomSong = Math.round(Math.random() * ($scope.songs.length - 1));
       $scope.currentSong=angular.copy($scope.songs[randomSong]);
+    },250);
   }
 })
 
