@@ -7,5 +7,5 @@
 npm install -g bower ionic cordova
 
 ##Running Project
-*npm install
-*ionic serve
+npm install
+ionic serve
