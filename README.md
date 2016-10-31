@@ -1,13 +1,11 @@
-IonicTraining
+# IonicTraining
 
-Prerequisites:
-Install node.js
+##Prerequisites:
+*Install node.js
 
-*Run
+##Install tools
 npm install -g bower ionic cordova
 
-In the project folder run:
-
-npm install
-
-ionic serve
+##Running Project
+*npm install
+*ionic serve
