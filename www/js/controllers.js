@@ -51,12 +51,17 @@ angular.module('songhop.controllers',['ionic','songhop.services'])
 })
 
 
-.controller('FavoritesCtrl',function($scope, User){
+.controller('FavoritesCtrl',function($scope, User,$window){
   $scope.favorites=User.favorites;
 
   $scope.removeSongFromFavorites=function(song,index){
     User.removeSongFromFavorites(song,index);
   }
+
+  $scope.openSong=function(song){
+    $window.open(song.open_url,"_system");
+  }
+
 })
 
 
