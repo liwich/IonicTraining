@@ -3,7 +3,8 @@ angular.module('songhop.services',[])
 .factory('User',function(){
 
 	var o={
-		favorites:[]
+		favorites:[],
+		newFavorites:0
 	}
 
 	o.addSongToFavorites= function(song){
@@ -11,12 +12,17 @@ angular.module('songhop.services',[])
 			return false;
 
 		o.favorites.unshift(song);
+		o.newFavorites++;
 	}
 
 	o.removeSongFromFavorites= function(song, index){
 		if(!song)
 			return false;
 		o.favorites.splice(index,1);
+	}
+
+	o.favoriteCount= function(){
+		return o.newFavorites;
 	}
 
 	return o;

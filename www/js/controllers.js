@@ -60,12 +60,16 @@ angular.module('songhop.controllers',['ionic','songhop.services'])
 })
 
 
-.controller('TabsCtrl',function($scope, Recommendations){
+.controller('TabsCtrl',function($scope,User, Recommendations){
   $scope.enteringFavorites=function(){
     Recommendations.haltAudio();
+    User.newFavorites=0;
   }
 
   $scope.leavingFavorites= function(){
     Recommendations.init();
   }
+
+  $scope.favCount=User.favoriteCount;
+
 })
