@@ -1,11 +1,28 @@
 angular.module('songhop.controllers',['ionic','songhop.services'])
 
-.controller('DiscoverCtrl',function($scope,$timeout, User, Recommendations){
+.controller('DiscoverCtrl',function($scope,$ionicLoading,$timeout, User, Recommendations){
+
+  var showLoading= function(){
+    $ionicLoading.show({
+      template: '<i class="ion-load-c"></i>',
+      noBackdrop: true
+    });
+  }
+
+  var hideLoading= function(){
+    $ionicLoading.hide();
+  }
+
+  showLoading();
 
   Recommendations.init()
     .then(function(){
       $scope.currentSong=Recommendations.queue[0];
       Recommendations.playCurrentSong();
+    })
+    .then(function(){
+      hideLoading();
+      $scope.currentSong.loaded = true;
     });
 
     $scope.sendFeedback=function(bool){
@@ -17,9 +34,12 @@ angular.module('songhop.controllers',['ionic','songhop.services'])
 
       $timeout(function(){
         $scope.currentSong= Recommendations.queue[0];
+        $scope.currentSong.loaded = false;
       },250);
 
-      Recommendations.playCurrentSong();
+      Recommendations.playCurrentSong().then(function(){
+        $scope.currentSong.loaded = true;
+      });
     }
 
     $scope.getNextAlbumImg= function(){
